@@ -32,7 +32,7 @@ export class CreateUserDto {
   @MinLength(3)
   @Matches(/[A-Z]/, {
     message:
-      'Password must beMinimum eight characters, one number one letter, uppercase letter and one special character',
+      'Password must be : Minimum eight characters, one number one letter, uppercase letter and one special character',
   })
   password: string;
 }
