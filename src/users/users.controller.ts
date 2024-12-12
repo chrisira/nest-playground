@@ -13,17 +13,18 @@ import {
 import { CreateUserDto } from './dtos/create-user.dto';
 import { GetUsersParamDto } from './dtos/get-users-param.dto';
 import { PatchUserDto } from './dtos/patch-user.dto';
+import { UserService } from './providers/user.service';
 
 @Controller('users')
 export class UsersController {
+  constructor(private readonly userService: UserService) {}
   @Get('/:id?')
   public getUsers(
     @Param() getUserParamDto: GetUsersParamDto,
     @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
-    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: Number,
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
   ) {
-    console.log(getUserParamDto);
-    return 'You sent a get request to users endpoint';
+    return this.userService.findAll(getUserParamDto, limit, page);
   }
   @Post()
   public createUsers(@Body(new ValidationPipe()) createUserDto: CreateUserDto) {
