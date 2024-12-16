@@ -21,7 +21,7 @@ async function bootstrap() {
     .setDescription('use the base API URL as http://localhost/3000')
     .setTermsOfService('http://localhost:3000/terms-of-service')
     .setLicense('MIT License', 'https://gihub.com/')
-    .addServer('http://localhost/3000')
+    .addServer('http://localhost:3000')
     .setVersion('1.0')
     .build();
   // Instantiate Document
