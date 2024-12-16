@@ -16,7 +16,14 @@ async function bootstrap() {
   swagger configuration
 
   */
-  const config = new DocumentBuilder().setVersion('1.0').build();
+  const config = new DocumentBuilder()
+    .setTitle('Nest Js App API')
+    .setDescription('use the base API URL as http://localhost/3000')
+    .setTermsOfService('http://localhost:3000/terms-of-service')
+    .setLicense('MIT License', 'https://gihub.com/')
+    .addServer('http://localhost/3000')
+    .setVersion('1.0')
+    .build();
   // Instantiate Document
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
