@@ -8,6 +8,8 @@ import {
   IsString,
   IsUrl,
   Matches,
+  MaxLength,
+  maxLength,
   Min,
   MinLength,
   ValidateNested,
@@ -25,6 +27,7 @@ export class CreatePostDto {
   })
   @IsString()
   @MinLength(4)
+  @MaxLength(512)
   @IsNotEmpty()
   title: string;
 
@@ -41,6 +44,7 @@ export class CreatePostDto {
     example: 'my-blog-post',
   })
   @IsString()
+  @MaxLength(256)
   @IsNotEmpty()
   @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)&$/, {
     message:
@@ -77,6 +81,7 @@ export class CreatePostDto {
   })
   @IsOptional()
   @IsUrl()
+  @MaxLength(1024)
   featuredImageUrl?: string;
 
   @ApiPropertyOptional({
