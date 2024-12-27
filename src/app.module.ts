@@ -34,7 +34,7 @@ import { MetaOptionController } from './meta-option/meta-option.controller';
     TagsModule,
     MetaOptionsModule,
   ],
-  controllers: [AppController, MetaOptionController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
