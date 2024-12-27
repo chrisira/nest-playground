@@ -9,8 +9,12 @@ export class MetaOptionsService {
   constructor(
     @InjectRepository(MetaOption)
     private readonly metaOptionsRepository: Repository<MetaOption>,
-  ) {
-    let metaOption = this.metaOptionsRepository
+  ) {}
+
+  public async create(createPostMetaOptionsDto: CreatePostMetaOptionsDto) {
+    let metaOption = this.metaOptionsRepository.create(
+      createPostMetaOptionsDto,
+    );
+    return await this.metaOptionsRepository.save(metaOption);
   }
-  public async create(createPostMetaOptionsDto: CreatePostMetaOptionsDto) {}
 }
