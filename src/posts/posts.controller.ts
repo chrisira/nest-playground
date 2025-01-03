@@ -31,7 +31,7 @@ export class PostsController {
   })
   @Post()
   public createPost(@Body(new ValidationPipe()) createPostDto: CreatePostDto) {
-    console.log(createPostDto);
+    return this.postsService.create(createPostDto);
   }
   @ApiOperation({
     summary: 'Update an existing blogpost',

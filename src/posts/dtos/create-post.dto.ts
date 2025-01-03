@@ -46,7 +46,7 @@ export class CreatePostDto {
   @IsString()
   @MaxLength(256)
   @IsNotEmpty()
-  @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)&$/, {
+  @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
     message:
       'A slug  should be all small letters and uses only "-" and without spaces. For example "my-url',
   })
@@ -101,28 +101,22 @@ export class CreatePostDto {
   tags: [];
 
   @ApiPropertyOptional({
-    type: 'array',
+    type: 'object',
     required: false,
     items: {
       type: 'object',
       properties: {
-        key: {
-          type: 'string',
+        metaValue: {
+          type: 'json',
           description:
-            'They key can be a string identifier for your meta option',
-          example: 'sidebarEnabled',
-        },
-        value: {
-          type: 'any',
-          description: 'Any value that you want to save to the key',
-          example: 'true',
+            'meta value is a json string',
+          example: '{"sidebarEnabled":true}',
         },
       },
     },
   })
   @IsOptional()
-  @IsArray()
   @ValidateNested({ each: true })
   @Type(() => CreatePostMetaOptionsDto)
-  metaOptions?: CreatePostMetaOptionsDto[];
+  metaOptions?: CreatePostMetaOptionsDto | null;
 }
