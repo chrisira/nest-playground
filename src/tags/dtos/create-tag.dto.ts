@@ -21,7 +21,7 @@ export class CreateTagDto {
   @IsString()
   @MaxLength(256)
   @IsNotEmpty()
-  @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)&$/, {
+  @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
     message:
       'A slug  should be all small letters and uses only "-" and without spaces. For example "my-url',
   })
