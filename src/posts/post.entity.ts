@@ -81,7 +81,7 @@ export class Post {
   })
   metaOptions?: MetaOption;
 
-  @ManyToMany(() => Tag, { eager: true })
+  @ManyToMany(() => Tag,(tag) => tag.posts, { eager: true })
   @JoinTable()
   tags?: Tag[];
 

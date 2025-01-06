@@ -2,19 +2,14 @@ PATCH http://localhost:3000/posts/
 Content-Type:application/json
 
 {
-    "id":1234,
-    "title":"What's new with nest js",
+    "id":10,
+    "title":"What's new with nest js with typescript",
     "postType":"post",
-    "slug":"new-with-nestjs",
     "status":"draft",
     "content":"test content",
-    "schema":"{fklsdajflkdjflkfjaj}",
-    "featuredImageUrl":"http://localhost.com/images/image1.jpg",
-    "tags":["nestJs","typescript"],
-    "metaOptions":[
-        {
-            "key":"testKey",
-            "value":20
-        }
-    ]
+    "metaOptions":{
+        "metaValue":"{\"sidebarEnabled\": true, \"footerActive\": true}"
+    },
+    "tags":[1,2]
+    
 }
