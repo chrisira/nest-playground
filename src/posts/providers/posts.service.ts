@@ -46,4 +46,20 @@ export class PostsService {
     // return the created post
     return await this.postsRepository.save(post);
   }
+
+  public async delete(id: number) {
+    // find the post by id
+    let post = await this.postsRepository.findOneBy({ id });
+
+    // deleting the post
+    await this.postsRepository.delete(id);
+
+    // delete meta options
+
+    await this.metaOptionsRepository.delete(post.metaOptions.id);
+
+    // confirmation
+
+    return { deleted: true, id };
+  }
 }
