@@ -1,4 +1,13 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Post } from 'src/posts/post.entity';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class Tag {
@@ -6,38 +15,41 @@ export class Tag {
   id: number;
 
   @Column({
-    type:'varchar',
-    nullable:false,
-    unique:true
+    type: 'varchar',
+    nullable: false,
+    unique: true,
   })
   name: string;
-  
+
   @Column({
-    type:'varchar',
-    length:256,
-    nullable:false,
-    unique:true
+    type: 'varchar',
+    length: 256,
+    nullable: false,
+    unique: true,
   })
   slug: string;
 
   @Column({
-    type:'text',
-    nullable:false,
+    type: 'text',
+    nullable: false,
   })
   description?: string;
 
   @Column({
-    type:'text',
-    nullable:true,
+    type: 'text',
+    nullable: true,
   })
   schema?: string;
 
   @Column({
-    type:'varchar',
-    length:1024,
-    nullable:true,
+    type: 'varchar',
+    length: 1024,
+    nullable: true,
   })
   featuredImageUrl?: string;
+
+  @ManyToMany(() => Post, (post) => post.tags)
+  posts: Post[];
 
   @CreateDateColumn()
   createDate: Date;
