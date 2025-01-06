@@ -9,7 +9,7 @@ export class AuthService {
   ) {}
   public login(email: string, password: string, id: string) {
     //check user exists in in the database
-    const user = this.usersService.findOneById('1234');
+    //const user = this.usersService.findOneById('1234');
 
     //login
 
