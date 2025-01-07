@@ -10,12 +10,16 @@ import { Post } from './posts/post.entity';
 import { TagsModule } from './tags/tags.module';
 import { MetaOptionsModule } from './meta-options/meta-options.module';
 import { MetaOptionController } from './meta-option/meta-option.controller';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     UsersModule,
     PostsModule,
     AuthModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     TypeOrmModule.forRootAsync({
       imports: [],
       inject: [],
@@ -27,7 +31,7 @@ import { MetaOptionController } from './meta-option/meta-option.controller';
         username: 'postgres',
         password: 'secret',
         host: 'localhost',
-        autoLoadEntities:true,
+        autoLoadEntities: true,
         database: 'db_nest_playground',
       }),
     }),
