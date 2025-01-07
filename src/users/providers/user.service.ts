@@ -18,11 +18,12 @@ export class UserService {
 
     @InjectRepository(User)
     private usersRepository: Repository<User>,
+
+    // inject the config service
+
+    private readonly configService: ConfigService,
   ) {}
 
-  // inject the config service
-
-  private readonly configService: ConfigService;
   /**
    * The method to get all the users from the database
    */
@@ -31,7 +32,7 @@ export class UserService {
     limit: number,
     page: number,
   ) {
-    const environment = this.configService.get<string>('DB_NAME');
+    const environment = this.configService?.get('DB_NAME');
     console.log(environment);
     const isAuth = this.authService.isAuth();
     console.log(isAuth);
