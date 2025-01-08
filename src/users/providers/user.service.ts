@@ -32,7 +32,7 @@ export class UserService {
     limit: number,
     page: number,
   ) {
-    const environment = this.configService?.get('DB_NAME');
+    const environment = this.configService.get('DATABASE_NAME');
     console.log(environment);
     const isAuth = this.authService.isAuth();
     console.log(isAuth);
